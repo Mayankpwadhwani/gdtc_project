@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<body class="hi ">
+<div class="flex items-center justify-center min-h-screen">
+<div class="w-full h-50 max-w-sm p-8 space-y-6 bg-white border-2 rounded shadow-md">
+  <h2 class="text-2xl font-bold mb-4 text-center">Contact Us</h2>
+  <form (ngSubmit)="submitForm()" class="space-y-4">
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Name</label>
+      <input [(ngModel)]="name" name="name" required class="mt-1 block w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Email</label>
+      <input [(ngModel)]="email" name="email" type="email" required class="mt-1 block w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Message</label>
+      <textarea [(ngModel)]="message" name="message" rows="4" required class="mt-1 block w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+    </div>
+    <button type="submit" class="w-full bg-indigo-950 text-white py-2 px-4 rounded-md hover:bg-blue-700">Send Message</button>
+  </form>
+</div>
+</div>
+</body>
+<app-footer></app-footer>
+<router-outlet></router-outlet>

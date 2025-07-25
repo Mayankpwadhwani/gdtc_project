@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+<body class="color h-full w-full">
+<div class=" flex justify-start ">
+<div class=" px-6 py-6 text-white">
+  <h2 class="text-xl font-bold">Travel Summary</h2>
+  <p><strong>From:</strong> {{ travelInfo.source }}</p>
+  <p><strong>To:</strong> {{ travelInfo.destination }}</p>
+  <p><strong>Departure:</strong> {{ travelInfo.departure_time }}</p>
+  <p><strong>Arrival:</strong> {{ travelInfo.arrival_time }}</p>
+  <p><strong>Class:</strong> {{ travelInfo.classs }}</p>
+  <p><strong>Price:</strong> ₹{{ travelInfo.price }}</p>
+
+</div>
+</div>
+<div class="flex justify-center">
+<div class="w-full h-50 max-w-sm p-8 mb-2 space-y-6 bg-white border-2 shadow-md  bg-gray-100  ">
+  <h3 class="text-lg font-semibold mb-2">Enter Booking Details</h3>
+  <form (ngSubmit)="submitBooking()" #form="ngForm">
+    <input type="text" name="customer_name" [(ngModel)]="booking.customer_name" placeholder="Full Name"  class="mb-3 block w-full border p-2">
+    <input type="email" name="email" [(ngModel)]="booking.email" placeholder="Email" class="mb-3 block border w-full p-2">
+    <input type="number" name="passengers" [(ngModel)]="booking.passengers" max="6" placeholder="Passengers" class="mb-3 border block w-full p-2">
+    <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Confirm Booking</button>
+  </form>
+</div>
+</div>
+</body>
+<app-footer></app-footer>
