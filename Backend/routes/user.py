@@ -43,8 +43,7 @@ def login(username: str = Form(...), password: str = Form(...)):
         return {"access_token": token, "token_type": "bearer"}
     raise HTTPException(status_code=401, detail="Invalid credentials")
 
-#  (user: dict = Depends(require_user)
-@router.get("/trainn",)
+@router.get("/trainn")
 def get_trains():
     trains = collectiontrain.find()
     return trainsEntity(trains)
@@ -80,7 +79,7 @@ def delete_train(train_id: int):
         raise HTTPException(status_code=404, detail="Train not found")
     return {"message": f"Train with ID {train_id} deleted"}
 
-#apis for bus 
+
 @router.get("/bus",response_model=list[Bus])
 def get_bus():
     buses=collectionbus.find()
@@ -153,27 +152,6 @@ def delete_flight(flight_id: int):
         raise HTTPException(status_code=404, detail="Flight not found")
     return {"message": f"Flight with ID {flight_id} deleted"}
 
-
-@router.get("/cities")
-def get_available_cities():
-    cities = set()
-    for collection in [collectionbus, collectiontrain, collectionflight]:
-        for item in collection.find():
-            cities.add(item.get("from"))
-            cities.add(item.get("to"))
-    return list(cities)
-
-
-@router.get("/available-dates")
-def get_available_dates():
-    dates = set()
-    for collection in [collectionbus, collectiontrain, collectionflight]:
-        for item in collection.find():
-            if "day" in item:
-                dates.add(item["day"])
-    return list(dates)
-
-
 @router.get("/search")
 def search_transport(
     mode: str = Query(..., enum=["train", "bus", "flight"]),
@@ -201,7 +179,7 @@ def search_transport(
     if day:
         try:
             date_obj = datetime.strptime(day, "%Y-%m-%d")
-            weekday = calendar.day_name[date_obj.weekday()]  # Capitalized
+            weekday = calendar.day_name[date_obj.weekday()]
             query["day"] = weekday
         except ValueError:
             raise HTTPException(status_code=400, detail="Invalid date format. Use YYYY-MM-DD.")
@@ -220,7 +198,6 @@ async def book_trip(request: Request):
     data = await request.json()
     result = collectionbookings.insert_one(data)
 
-    # Add the stringified ID to the data
     data["_id"] = str(result.inserted_id)
 
     print("Booking inserted:", data)

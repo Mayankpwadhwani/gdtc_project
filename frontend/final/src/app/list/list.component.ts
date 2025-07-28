@@ -23,8 +23,6 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {
     this.results = this.travelData.getResults();
   }
-  
-
 book(item: any) {
   console.log('Login status:', this.authService.isLoggedIn());
 

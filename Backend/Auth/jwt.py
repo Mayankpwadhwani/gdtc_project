@@ -1,7 +1,5 @@
 from jose import JWTError, jwt
 from datetime import datetime, timedelta
-from fastapi import Depends
-from fastapi.security import OAuth2PasswordBearer
 
 
 SECRET_KEY = "khg287jhg872ugs"

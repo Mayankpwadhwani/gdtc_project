@@ -17,9 +17,8 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    // read karenge storage to refresh
+   
     this.loggedIn = localStorage.getItem('loggedIn') === 'true';
-    console.log("AuthService Check: User is", this.loggedIn ? "Logged In" : "Logged Out");
     return this.loggedIn;
   }
 

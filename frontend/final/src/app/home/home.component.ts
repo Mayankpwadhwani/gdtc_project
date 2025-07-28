@@ -52,13 +52,6 @@ export class HomeComponent {
     this.errorMessage = '';
     this.results = [];
 
-    console.log('Sending request with:', {
-      mode: this.mode,
-      from_city: this.fromCity,
-      to_city: this.toCity,
-      day: this.date
-    });
-
     this.http.get(apiUrl, { params }).subscribe({
       next: (data: any) => {
         
@@ -77,8 +70,8 @@ export class HomeComponent {
 logout() {
   this.authService.logout();
   localStorage.removeItem('access_token');
-  alert("Logged Out Successfully")
-  this.router.navigate(['/home']);
+  alert("Logged Out Successfully")//snackbar
+  this.router.navigate(['/login']);
 }
 
 }

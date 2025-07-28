@@ -1,8 +1,7 @@
 
 from core.database import collectionusers
-from Auth.login import get_password_hash, verify_password
+from Auth.login import get_password_hash
 from models.users import UserCreate
-
 
 
 def get_user_by_email(email: str):
