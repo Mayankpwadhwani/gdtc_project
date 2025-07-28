@@ -10,36 +10,9 @@ from core.database import collectiontrain,collectionbus, collectionflight,collec
 from datetime import datetime
 import calendar
 
+booking=APIRouter(tags=["Bookings"])
 
-router = APIRouter(tags=["Login"])
-
-@router.post("/register")
-def register(user: UserCreate):
-    existing_user = get_user_by_email(user.email)
-    if existing_user:
-        raise HTTPException(status_code=400, detail="Email already registered")
-    create_user(user)
-    return {"msg": "User registered successfully"}
-
-@router.post("/login")
-def login(user: UserLogin):
-    db_user = get_user_by_email(user.email)
-    if not db_user or not verify_password(user.password, db_user["password"]):
-        raise HTTPException(status_code=401, detail="Invalid credentials")
-    token = create_access_token({"sub": db_user["email"]})
-    return {"access_token": token, "token_type": "bearer"}
-
-
-@router.post("/token")
-def login(username: str = Form(...), password: str = Form(...)):
-
-    if username == "mayank" and password == "abc123":
-        token = create_access_token({"sub": username})
-        return {"access_token": token, "token_type": "bearer"}
-    raise HTTPException(status_code=401, detail="Invalid credentials")
-
-
-@router.get("/search")
+@booking.get("/search")
 def search_transport(
     mode: str = Query(..., enum=["train", "bus", "flight"]),
     from_city: str = Query(...),
@@ -80,7 +53,7 @@ def search_transport(
     return results
 
 
-@router.post("/book")
+@booking.post("/book")
 async def book_trip(request: Request):
     data = await request.json()
     result = collectionbookings.insert_one(data)
@@ -91,8 +64,7 @@ async def book_trip(request: Request):
     return {"message": "Booking confirmed", "data": data}
 
 
-@router.get("/bookingdetails",response_model=list[Booking])
+@booking.get("/bookingdetails",response_model=list[Booking])
 def get_bookings():
     bookings=collectionbookings.find()
     return bookingsEntity(bookings)
-

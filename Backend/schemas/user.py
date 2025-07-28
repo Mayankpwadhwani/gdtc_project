@@ -61,7 +61,7 @@ def bookingEntity(booking)->dict:
     "departure_time":booking["departure_time"],
     "arrival_time":booking["arrival_time"],
     "duration":booking["duration"],
-    "classs":booking["classs"],
+    "classs":booking.get["classs"],
     "day":booking["day"],
     "price":booking["price"],
     "customer_name":booking["customer_name"],
