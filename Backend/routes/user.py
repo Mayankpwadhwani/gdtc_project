@@ -1,6 +1,5 @@
-from typing import Optional, Union
+from typing import Optional
 from fastapi import APIRouter, HTTPException,Form, Query, Request
-from fastapi.security import OAuth2PasswordRequestForm
 from models.user import Train
 from models.users import UserCreate,UserLogin
 from models.bus import Bus
@@ -8,21 +7,16 @@ from models.booking import Booking
 from models.flight import Flight
 from Auth.jwt import create_access_token
 from Auth.depend import get_current_user
-from Auth.depend1 import require_user
 from Auth.crud import get_user_by_email,create_user
-from Auth.login import verify_password,decode_token,datetime
+from Auth.login import verify_password,datetime
 from schemas.user import trainEntity, trainsEntity,busEntity,busesEntity,flightEntity,flightsEntity,bookingsEntity
 from core.database import collectiontrain,collectionbus, collectionflight,collectionbookings
 from fastapi import Depends
-from passlib.context import CryptContext
 from datetime import datetime
 import calendar
 
 
 router = APIRouter()
-
-
-
 
 @router.post("/register")
 def register(user: UserCreate):
