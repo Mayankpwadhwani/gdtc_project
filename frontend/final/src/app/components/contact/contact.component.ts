@@ -18,7 +18,7 @@ export class ContactComponent {
   message = '';
 
   submitForm() {
-    console.log('Form submitted:', { name: this.name, email: this.email, message: this.message });
+    
     alert('Thank you for contacting us!');
   }
 }

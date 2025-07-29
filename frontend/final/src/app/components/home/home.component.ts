@@ -3,9 +3,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { TravelService } from '../travel.service';
+import { TravelService } from 'src/app/travel.service';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService } from 'src/app/auth.service';
 import { FooterComponent } from '../footer/footer.component';
 
 @Component({
@@ -26,7 +26,14 @@ export class HomeComponent {
   results: any[] = [];
   loading = false;
   errorMessage = '';
+ name = '';
+  email = '';
+  message = '';
 
+  submitForm() {
+    
+    alert('Thank you for contacting us!');
+  }
 
   constructor(private http: HttpClient,
      private travelData: TravelService,

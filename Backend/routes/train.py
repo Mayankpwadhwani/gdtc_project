@@ -6,8 +6,6 @@ from schemas.user import trainEntity, trainsEntity
 from core.database import collectiontrain
 from fastapi import Depends
 
-
-
 train = APIRouter(tags=["Train"])
 
 @train.get("/train")

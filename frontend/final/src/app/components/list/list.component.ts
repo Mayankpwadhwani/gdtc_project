@@ -1,8 +1,8 @@
 
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { TravelService } from '../travel.service';
-import { AuthService } from '../auth.service';
+import { TravelService } from 'src/app/travel.service';
+import { AuthService } from 'src/app/auth.service';
 import { Router } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';

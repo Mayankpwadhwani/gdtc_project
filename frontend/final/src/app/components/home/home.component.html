@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VoyageWise</title>
-
+<style>
+    html{
+        scroll-behavior: smooth;
+    }
+</style>
 </head>
 <body class="w-full">
    
@@ -19,9 +23,8 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a routerLink="/home" class="text-indigo-950 hover:text-indigo-800 px-3 py-2 rounded-md text-md font-medium">Home</a>
                     <a routerLink="/mybooking" class="text-indigo-950 hover:text-indigo-800 px-3 py-2 rounded-md text-md font-medium">Bookings</a>
-                    <a routerLink="/services" class="text-indigo-950 hover:text-indigo-800 px-3 py-2 rounded-md text-md font-medium">Services</a>
-                    <a routerLink="/offers" class="text-indigo-950 hover:text-indigo-800 px-3 py-2 rounded-md text-md font-medium">Offers</a>
-                    <a routerLink="/contact" class="text-indigo-950 hover:text-indigo-800 px-3 py-2 rounded-md text-md font-medium">Contact</a>
+                    <a href="#services" class="text-indigo-950 hover:text-indigo-800 px-3 py-2 rounded-md text-md font-medium">Services</a>
+                    <a href="#contact" class="nav-link smoothScroll text-indigo-950 hover:text-indigo-800 px-3 py-2 rounded-md text-md font-medium">Contact</a>
                 </div>
                 <div class="flex items-center">
                     <button routerLink="/login" class="bg-indigo-950 hover:bg-blue-800 text-white px-4 py-2 rounded-md text-sm font-medium">Sign Up</button>
@@ -132,9 +135,9 @@
 </div>
 </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div id="services" class=" max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-gray-900">Our Travel Solutions</h2>
+            <h2 class="text-3xl font-bold text-gray-900">Our Travel Services</h2>
             <p class="mt-4 max-w-2xl text-xl text-gray-600 mx-auto">Whether you're planning a quick getaway or an extended journey, we've got you covered across all transportation modes.</p>
         </div>
         
@@ -203,6 +206,26 @@
             </div>
         </div>
     </div>
+    <div id="contact" class=" flex items-center justify-center min-h-screen">
+<div class="w-full h-50 max-w-sm p-8 space-y-6 bg-white border-2 rounded shadow-md">
+  <h2 class="text-2xl font-bold mb-4 text-center">Contact Us</h2>
+  <form (ngSubmit)="submitForm()" class="space-y-4">
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Name</label>
+      <input [(ngModel)]="name" name="name" required class="mt-1 block w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Email</label>
+      <input [(ngModel)]="email" name="email" type="email" required class="mt-1 block w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Message</label>
+      <textarea [(ngModel)]="message" name="message" rows="4" required class="mt-1 block w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+    </div>
+    <button type="submit" class="w-full bg-indigo-950 text-white py-2 px-4 rounded-md hover:bg-blue-700">Send Message</button>
+  </form>
+</div>
+</div>
 <footer class=" px-1  color shadow-sm ">
 <div class=" w-full mx-auto p-4 md:py-8">
     <div class="sm:flex sm:items-center sm:justify-between">
