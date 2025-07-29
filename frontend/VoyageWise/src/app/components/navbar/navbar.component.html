@@ -9,11 +9,16 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a routerLink="/home" class="text-indigo-950 hover:text-indigo-800 px-3 py-2 rounded-md text-md font-medium">Home</a>
                     <a routerLink="/mybooking" class="text-indigo-950 hover:text-indigo-800 px-3 py-2 rounded-md text-md font-medium">Bookings</a>
-                    <a routerLink="/services" class="text-indigo-950 hover:text-indigo-800 px-3 py-2 rounded-md text-md font-medium">Services</a>
-                    <a routerLink="/offers" class="text-indigo-950 hover:text-indigo-800 px-3 py-2 rounded-md text-md font-medium">Offers</a>
-                    <a routerLink="/contact" class="text-indigo-950 hover:text-indigo-800 px-3 py-2 rounded-md text-md font-medium">Contact</a>
+                    <a href="#services" class="text-indigo-950 hover:text-indigo-800 px-3 py-2 rounded-md text-md font-medium">Services</a>
+                    <a href="#contact" class="nav-link smoothScroll text-indigo-950 hover:text-indigo-800 px-3 py-2 rounded-md text-md font-medium">Contact</a>
+                </div>
+                <div class="flex items-center">
+                    <button routerLink="/login" class="bg-indigo-950 hover:bg-blue-800 text-white px-4 py-2 rounded-md text-sm font-medium">Sign Up</button>
+                    <button (click)="logout()" class=" text-indigo-950 px-4 py-2 transition"> Logout
+                     </button>
+
+
                 </div>
             </div>
         </div>
-</nav>
-<router-outlet></router-outlet>
+    </nav>

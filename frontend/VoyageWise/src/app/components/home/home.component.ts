@@ -7,12 +7,13 @@ import { TravelService } from 'src/app/travel.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 import { FooterComponent } from '../footer/footer.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [CommonModule, FormsModule,
-     RouterOutlet,RouterLink,FooterComponent],
+     RouterOutlet,RouterLink,FooterComponent,NavbarComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
@@ -73,12 +74,6 @@ export class HomeComponent {
       }
     });
   }
-  
-logout() {
-  this.authService.logout();
-  localStorage.removeItem('access_token');
-  alert("Logged Out Successfully")//snackbar
-  this.router.navigate(['/login']);
-}
+
 
 }
